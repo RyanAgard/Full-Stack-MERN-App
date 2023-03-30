@@ -33,8 +33,8 @@ app.use('/posts', postRoutes)
 app.use('/comments/p/', commentRoutes)
 app.use('/users', authorize, userRoutes)
 app.use('/auth', authRoutes)
+app.use('/article',articleRoute)
 
-app.use('/seed',articleRoute)
 
 
 

@@ -7,14 +7,15 @@ module.exports.seed = async (req, res) => {
     res.redirect('/posts')
 }
 
-// module.exports.index = async (req, res) => {
-//     try {
-//         const article = await Article.find().sort({ createdAt: 1 })
-//         res.status(200).json(article)
-//     } catch(err) {
-//         res.status(400).json({ error: err.message })
-//     }
-// }
+
+module.exports.index = async (req, res) => {
+    try {
+        const article = await Article.find().sort({ createdAt: 1 })
+        res.status(200).json(article)
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}
 
 
 
