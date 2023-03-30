@@ -7,6 +7,6 @@ const articleSchema = new Schema({
    paragraph:{type:String,required:true},
 }, { timestamps: true })
 
-const Article= mongoose.model('Article', articleSchema)
+const Article= mongoose.model('article', articleSchema)
 
 module.exports = Article

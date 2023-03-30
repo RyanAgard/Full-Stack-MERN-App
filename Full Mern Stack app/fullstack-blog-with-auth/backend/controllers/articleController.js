@@ -1,20 +1,20 @@
-
+const article = require('../models/article');
 const Article= require('../models/articleModel')
 
-// module.exports.seed = async (req, res) => {
-//     // await Posts.deleteMany({})
-//     // await Posts.create(posts)
-//     res.redirect('/posts')
-// }
-
-module.exports.index = async (req, res) => {
-    try {
-        const article = await Article.find().sort({ createdAt: 1 })
-        res.status(200).json(article)
-    } catch(err) {
-        res.status(400).json({ error: err.message })
-    }
+module.exports.seed = async (req, res) => {
+    await Article.deleteMany({})
+    await Article.create(article)
+    res.redirect('/posts')
 }
+
+// module.exports.index = async (req, res) => {
+//     try {
+//         const article = await Article.find().sort({ createdAt: 1 })
+//         res.status(200).json(article)
+//     } catch(err) {
+//         res.status(400).json({ error: err.message })
+//     }
+// }
 
 
 
@@ -37,14 +37,14 @@ module.exports.index = async (req, res) => {
 //     }
 // }
 
-module.exports.show = async (req, res) => {
-    try {
-        // populate replaces the ids with actual documents/objects we can use
-        const post = await Article.findById(req.params.id).populate('comments')
-        res.status(200).json(post)
-    } catch(err) {
-        res.status(404).json({ error: err.message })
-    }
-}
+// module.exports.show = async (req, res) => {
+//     try {
+//         // populate replaces the ids with actual documents/objects we can use
+//         const post = await Article.findById(req.params.id).populate('comments')
+//         res.status(200).json(post)
+//     } catch(err) {
+//         res.status(404).json({ error: err.message })
+//     }
+// }
 
 
