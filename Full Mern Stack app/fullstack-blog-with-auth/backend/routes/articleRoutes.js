@@ -9,23 +9,8 @@ const GamingData = require('../models/article')
 
 router.get('/seed', async(req, res)=>{
     
- GamingData= [
-  {  img: "https://gamingbolt.com/wp-content/uploads/2023/03/resident-evil-4-remake-1-1024x576.jpg" ,
-  paragraph: "Resident Evil 4 Remake launched worldwide last week and was met with widespread acclaim from critics and players alike. Unsurprisingly, that level of success is being reflected in the game’s sales as well.",
-     title:'Resident Evil 4 Remake Sold Over 3 Million Units in its First Two Days'}
-    // {
-
-    // }
-
-];
-
-
-
-  
     const NewData =await Article.create(GamingData)
-   
     res.json(NewData)
-  
 })
 
 

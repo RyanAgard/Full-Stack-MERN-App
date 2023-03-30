@@ -6,14 +6,14 @@ import { getAllPosts } from "../../services/postService"
 function Index({ user }) {
 
     const [posts, setPosts] = useState([])
-    const[article,setArticle]=useState()
+    const [article, setArticle] = useState()
 
-   const getArticle = async ()=>{
-    const article = await fetch('/article')
-    const result =await article.json()
-    setArticle(result)
-    console.log(result)
-   }
+    const getArticle = async () => {
+        const article = await fetch('/article')
+        const result = await article.json()
+        setArticle(result)
+        console.log(result)
+    }
 
     useEffect(() => {
         getArticle()
@@ -23,46 +23,54 @@ function Index({ user }) {
         }
         loadData()
     }, [])
-  
+
     return (
         <div>
-        <div className="card-group">
-        <div>{article?.map((articles,index)=>
-       
-             
-                <div className="card">
-                    <img src= {articles.img} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="title">{articles.title}</h5>
-                        <p className="text">{articles.paragraph}</p>
+            <div className="card-group ">
+                {article?.map((articles, index) =>
+
+                    <div className="card " key={index}>
+                        <img src={articles.img} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="title">{articles.title}</h5>
+                            <p className="text">{articles.paragraph}</p>
+                        </div>
                     </div>
-                    <div className="card-footer">
-                        <small className="text-body-secondary">Last updated 3 mins ago</small>
-                    </div>
+
+                )}
+            </div>
+
+
+            {/* <h1>Index View</h1> */}
+            <div id="posts">
+
+                {/* {posts?.map((post, index) =>
+                    <Link to={`/posts/${post._id}`} key={index}>
+                        <div className="a-post">
+                            {post.subject}
+                        </div>
+                    </Link>
+                )}
+
+                {user &&
+                    <Link to="/posts/new">
+                        <button>NEW POST</button>
+                    </Link>
+                } */}
+
+            </div>
+
+            <div className="container">
+                <div className="flex-contrainer">
+                    <div className="col">Column</div>
+                    <div className="col">Column</div>
+                    <div className="col">Column</div>
+                    <div className="col">Column</div>
                 </div>
-              )}  
-      </div> 
-  </div>
-             {/* <h1>Index View</h1> */}
-                    <div id="posts">
-
-                        {posts?.map((post, index) =>
-                            <Link to={`/posts/${post._id}`} key={index}>
-                                <div className="a-post">
-                                    {post.subject}
-                                </div>
-                            </Link>
-                        )}
-
-                        {user &&
-                            <Link to="/posts/new">
-                                <button>NEW POST</button>
-                            </Link>
-                        }
-
-                    </div>
-                </div>
-                )
+                
+            </div>
+        </div>
+    )
 }
 
-                export default Index
+export default Index

@@ -11,12 +11,13 @@ const GamingData = [
         title: "PS5 Best-Selling Console As Sales Jump Over 300% - Americas Hardware Estimates for February 2023 - Sales"
 
     },
-    // {
-    //     img:
+    {
+        img: 'https://blog.playstation.com/tachyon/2023/03/2b618ff971cc16d08610c4a561b1a9754d45e3fb.jpg?resize=1088%2C612&crop_strategy=smart&zoom=1.5',
+        paragraph: "Today were happy to reveal the PlayStation Plus Monthly Games for April. The Monthly Games lineup of Meet Your Maker, Sackboy: A Big Adventure and Tails of Iron will be available to PlayStation Plus members on Tuesday, April 4 until Monday May 1. Let’s take a closer look at each of the games in turn. ",
+        title: "PlayStation Plus Monthly Games for April: Meet Your Maker, Sackboy: A Big Adventure, Tails of Iron"
 
 
-
-    // },
+    },
 
 ];
 
