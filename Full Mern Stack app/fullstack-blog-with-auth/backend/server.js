@@ -22,7 +22,7 @@ const commentRoutes = require('./routes/commentRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const articleRoute = require('./routes/articleRoutes')
-
+const moreArticle=require('./routes/moreArticleRoutes')
 const { authorize } = require('./middleware/authMiddleware')
 
 app.use(express.json())
@@ -34,7 +34,7 @@ app.use('/comments/p/', commentRoutes)
 app.use('/users', authorize, userRoutes)
 app.use('/auth', authRoutes)
 app.use('/article',articleRoute)
-
+app.use('/moreArticle',moreArticle)
 
 
 

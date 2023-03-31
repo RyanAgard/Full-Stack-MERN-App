@@ -10,7 +10,6 @@ import IndexPost from './pages/posts/Index';
 import NewPost from './pages/posts/New';
 import ShowPost from './pages/posts/Show';
 import EditComment from './pages/comments/Edit';
-
 import Register from './pages/users/Register';
 import Login from './pages/users/Login';
 
