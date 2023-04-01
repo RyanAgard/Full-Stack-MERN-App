@@ -294,37 +294,10 @@ li.posts-nav {
 .col order-first{
   border: 3px solid black;
 }
- /* .card-group{
+.carousel{
+padding: 10px;
 
-  
-}  */
-.card-body{
-    min-width: 144px;
-   padding: 0; 
-   margin: 0;
-} 
-/* .card{
-  min-height: 144px;
-  margin: 100px;
-}  */
-.container{
-  margin: 0;
-  padding: 0;
-
-border: black 1px solid;
-max-width: 100vw;
 }
-.col{
-min-width:15vw;
-margin: 0;
-text-align: center;
+.g-4{
+  padding: 10px;
 }
-.flex-container{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-/* div{
-}
-.h5title{} */

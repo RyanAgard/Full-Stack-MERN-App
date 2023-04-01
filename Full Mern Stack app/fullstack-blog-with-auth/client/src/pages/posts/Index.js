@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getAllPosts } from "../../services/postService"
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Carousel from 'react-bootstrap/Carousel';
+
 // import axios from "axios"
 
 function Index(user) {
@@ -33,9 +38,27 @@ function Index(user) {
     }, [])
 
     return (
+
+
         <div>
-            <div className="card-group ">
+            <Carousel>
+            {article?.map((articles, index) =>
+                <Carousel.Item interval={5000} key={index}>
+                    <img
+                        className="d-block w-100"
+                        src={articles.img}
+                        alt="..."
+                    />
+                    <Carousel.Caption>
+                        <h3>{articles.title}</h3>
+                        {/* <p >{articles.paragraph}</p> */}
+                    </Carousel.Caption>
+                </Carousel.Item>
+                )}
+            </Carousel>
+            {/* <div className="card-group ">
                 {article?.map((articles, index) =>
+
 
                     <div className="card " key={index}>
                         <img src={articles.img} className="card-img-top" alt="..." />
@@ -47,10 +70,32 @@ function Index(user) {
                         </div>
                     </div>
 
+
                 )}
-            </div>
-            <div className="container">
-                {morearticle?.map((morearticles, index) =>
+            </div> */}
+            <div>
+                {/* {morearticle?.map((morearticles, index) => */}
+                <Row xs={1} md={3} className="g-4">
+                    {morearticle?.map((morearticles, idx) => (
+                        <Col>
+                            <Card key={idx}>
+                                <Card.Img variant="top" src={morearticles.img} />
+                                <Card.Body>
+                                    <Card.Title>{morearticles.title}</Card.Title>
+                                    <Card.Text>
+                                        {/* This is a longer card with supporting text below as a natural
+                         lead-in to additional content. This content is a little bit
+                         longer. */}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+                {/* )} */}
+
+                {/* { <div className="container">
+               
                     <div className="flex-container" key={index}>
                         <div>
                             <img src={morearticles.img} className="card1" alt="..." />
@@ -58,11 +103,11 @@ function Index(user) {
                         <div>
                             <h5 className="title">{morearticles.title}</h5>
                         </div>
-                        {/* <div>
+                        { <div>
                             <p className="text">{morearticles.paragraph}</p>
-                        </div> */}
-                    </div>
-                )}
+                        </div> }
+                    </div> 
+                 */}
                 {/* <h1>Index View</h1> */}
                 <div id="posts">
 
@@ -82,7 +127,8 @@ function Index(user) {
 
                 </div>
             </div>
-        </div>
+        </div >
+
     )
 }
 
