@@ -6,19 +6,33 @@ const GamingData = [
         title: 'Resident Evil 4 Remake Sold Over 3 Million Units in its First Two Days'
     },
     {
-        img: "https://www.vgchartz.com/articles_media/images/ps5-best-selling-console-ns-939360_expanded.jpg",
-        paragraph: "The PlayStation 5 was the best-selling console in the Americas (USA, Canada, & Latin America) with 652,210 units sold for February 2023, according to VGChartz estimates. The PlayStation 5 has now sold an estimated 15.26 million units lifetime in the Americas",
-        title: "PS5 Best-Selling Console As Sales Jump Over 300% - Americas Hardware Estimates for February 2023 - Sales"
+        img: "https://cdn.exputer.com/wp-content/uploads/2023/04/Koei-Tecmo.jpg.webp",
+        paragraph: "In a recent survey, Koei Tecmo has shown interest in wanting to bring more games to Xbox Game Pass and PlayStation Plus Extra.",
+        title: "Koei Tecmo Wants to Bring More Games To Xbox Game Pass And PS Plus Extra"
 
     },
     {
         img: 'https://blog.playstation.com/tachyon/2023/03/2b618ff971cc16d08610c4a561b1a9754d45e3fb.jpg?resize=1088%2C612&crop_strategy=smart&zoom=1.5',
         paragraph: "Today were happy to reveal the PlayStation Plus Monthly Games for April. The Monthly Games lineup of Meet Your Maker, Sackboy: A Big Adventure and Tails of Iron will be available to PlayStation Plus members on Tuesday, April 4 until Monday May 1. Let’s take a closer look at each of the games in turn. ",
-        title: "PlayStation Plus Monthly Games for April: Meet Your Maker, Sackboy: A Big Adventure, Tails of Iron"
+        title: "PlayStation Plus Monthly Games for April"
 
 
     },
+    {
+        img: "https://www.mmobomb.com/file/2023/3/everquest-2-pulls-pay-to-raid-loot-boxes-812x456.jpg",
+        paragraph: "Earlier this month, Everquest 2 announced a new loot box system that bypassed lockouts and provided the chance to buy more opportunities at raid gear through the cash shop.",
+        title: "Everquest 2 Pulls Down Pay-To-Raid Loot Boxes From Cash Shop",
+    },
+    {
+        img: "https://nintendoeverything.com/wp-content/uploads/Klonoa-Phantasy-Reverie-Series-Nintendo-Direct-656x369.jpg",
+        paragraph: "Klonoa Phantasy Reverie Series launched on numerous platforms, but it turns out that development started out on Switch. That information comes from Ryo Ishida, the game’s producer in a recent issue of Lost In Cult.",
+        title: " Klonoa Phantasy Reverie Series development started on Switch,",
+    }
+
+
+
 
 ];
+
 
 module.exports = GamingData;

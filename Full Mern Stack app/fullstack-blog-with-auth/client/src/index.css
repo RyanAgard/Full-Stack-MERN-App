@@ -7,12 +7,13 @@ ul {
 li {
   display: flex;
 }
-form {
+ form {
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: 50px; 
+  gap: 50px;
 }
-input {
+/* input {
   margin: 20px;
 }
 button {
@@ -21,7 +22,7 @@ button {
   padding: 10px;
   font-weight: bold;
   background: white;
-}
+} */
 #new-post {
   display: grid;
   grid-template: 1fr 1fr 2fr / 2fr 1fr;
@@ -258,18 +259,30 @@ textarea {
 
 .user-auth form {
     text-align: center;
-    border: 3px solid black;
-    width: 20%;
+     /* border: 3px solid black; */
+     width: 30%; 
+     box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
 }
 
+.form-control{
+   text-align: center;
+  
+}
+/* .btn-primary{
+  margin-left: 50%;
+  margin-right:50%;
+
+} */
 .user-auth {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 100px;
   align-items: center;
 }
 
-ul.user-auth {
+ ul.user-auth {
   flex-direction: row;
   justify-content: flex-end;
   border-left: none;
@@ -306,7 +319,9 @@ li.posts-nav {
   margin-right: 26vw;
   padding: 10px;
 }
-.user-auth{
-
-  
+.Profile{
+  text-align: center;
+  margin: 0;
+  width: 100px;
+  height: 100px;
 }

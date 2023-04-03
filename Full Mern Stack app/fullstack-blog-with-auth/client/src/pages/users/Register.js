@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userInfo, userRegister } from "../../services/userService";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 let emptyForm = { 
     username: '',
@@ -41,40 +43,23 @@ function Register({ setUser }) {
     return ( 
         <div className="user-auth">
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input 
-                    type="text" 
-                    id="username"
-                    name="username"
-                    onChange={handleChange}
-                    value={form.username}
-                />
-                <br /><br />
-                <label htmlFor="email">Email:</label>
-                <br />
-                <input 
-                    type="email" 
-                    id="email"
-                    name="email"
-                    onChange={handleChange}
-                    value={form.email}
-                />
-                <br /><br />
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input 
-                    type="password" 
-                    id="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={form.password}
-                />
-                <br /><br />
-                <button>Submit</button>
-            </form>
+       
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                    <Form.Control  value={form.username} onChange={handleChange} name="username"type="text" placeholder="GamerTag" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formGroupPassword">
+                   
+                    <Form.Control value={form.email} onChange={handleChange} name="Email" id="Email" type="email"  placeholder="Email" />
+                </Form.Group>
+
+                <Form.Control value={form.password} onChange={handleChange} name="password" id="password" type="password" placeholder="Password" />
+                    <Button variant="primary" type="submit">Submit</Button>
+                
+            </Form>
+            
         </div>
+
      );
 }
 

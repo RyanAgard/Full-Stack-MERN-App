@@ -3,8 +3,10 @@ import axios from 'axios'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userInfo, userLogin } from '../../services/userService';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-let emptyForm = { 
+let emptyForm = {
     username: '',
     password: '',
     email: ''
@@ -38,34 +40,25 @@ function Login({ setUser }) {
         navigate('/posts')
     }
 
-    return ( 
+    return (
         <div className='user-auth'>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <br />
-                <input 
-                    type="text" 
-                    id="username"
-                    name="username"
-                    onChange={handleChange}
-                    value={form.username}
-                />
-                <br /><br />
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input 
-                    type="password" 
-                    id="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={form.password}
-                />
-                <br /><br />
-                <button>Submit</button>
-            </form>
+
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                    <Form.Control  value={form.username} onChange={handleChange} name="username"type="text" placeholder="GamerTag" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formGroupPassword">
+                   
+                    <Form.Control value={form.password} onChange={handleChange} name="password" id="password" type="password" placeholder="Password" />
+                    
+                </Form.Group>
+                < Button variant="primary" type="submit">Submit</Button>
+            </Form>
         </div>
-     );
+
+    );
+
 }
 
 export default Login;

@@ -37,6 +37,7 @@ export async function createPost(post) {
         return response.data
     } catch(err) {
         console.log(err.message)
+        alert(err.response?.data?.error)
     }
 }
 
