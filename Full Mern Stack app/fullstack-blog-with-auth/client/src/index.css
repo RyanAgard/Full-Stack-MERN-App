@@ -298,11 +298,15 @@ li.posts-nav {
   margin: 30px;
   padding: 10px;
   border-radius:100px ;
-  margin-left: 110px;
-  margin-right: 110px;
+  margin-left: 25vw;
+  margin-right: 25vw;
 }
 .g-4{
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 26vw;
+  margin-right: 26vw;
   padding: 10px;
+}
+.user-auth{
+
+  
 }

@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,} from "react"
 import { Link } from "react-router-dom"
 import { getAllPosts } from "../../services/postService"
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 
@@ -13,6 +12,8 @@ function Index(user) {
     const [posts, setPosts] = useState([])
     const [article, setArticle] = useState()
     const [morearticle, setmoreArticle] = useState()
+  
+    
 
     const moreArticle = async () => {
         const morearticle = await fetch('/moreArticle')
@@ -37,6 +38,7 @@ function Index(user) {
         loadData()
     }, [])
 
+    
     return (
 
 
@@ -75,12 +77,14 @@ function Index(user) {
             </div> */}
             <div>
                 {/* {morearticle?.map((morearticles, index) => */}
-                <Row xs={1} md={3} className="g-4">
+                <Row xs={1} md={3} className="g-4" >
                     {morearticle?.map((morearticles, idx) => (
-                        <Col>
-                            <Card key={idx}>
-                                <Card.Img variant="top" src={morearticles.img} />
+                        < Link to={`/posts/comments/`}>
+                            <Card key={idx} >
+                 
+                                <Card.Img variant="top" src={morearticles.img}  />
                                 <Card.Body>
+                                    
                                     <Card.Title>{morearticles.title}</Card.Title>
                                     <Card.Text>
                                         {/* This is a longer card with supporting text below as a natural
@@ -89,7 +93,7 @@ function Index(user) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
-                        </Col>
+                        </Link>
                     ))}
                 </Row>
                 {/* )} */}
