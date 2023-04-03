@@ -2,10 +2,11 @@ import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { createCommentForPost, deleteCommentFromPost } from "../../services/commentService"
 import { deletePost, getPost } from "../../services/postService"
+import { getmoreArticle } from "../../services/moreArticle"
 
 function Show({ user }) {
 
-    const [post, setPost] = useState({})
+    const [article, setArticle] = useState({})
 
     const navigate = useNavigate()
     const params = useParams()
@@ -14,22 +15,22 @@ function Show({ user }) {
 
     useEffect(() => {
         async function loadData() {
-            const data = await getPost(params.id)
-            if (!data) navigate('/posts')
-            setPost(data)
+            const data = await  getmoreArticle(params.id)
+            if (!data) data ={}
+            setArticle(data)
         }
         loadData()
     }, [params.id])
-
+  console.log(article)
     async function handleDeleteComment(comment) {
-        await deleteCommentFromPost(comment._id, post._id)
-        let updatedPost = { ...post }
+        await deleteCommentFromPost(comment._id, article._id)
+        let updatedPost = { ...article }
         updatedPost.comments = updatedPost.comments.filter(c => c._id !== comment._id)
-        setPost(updatedPost)
+        setArticle(updatedPost)
     }
 
     async function handleDeletePost() {
-        await deletePost(post._id)
+        await deletePost(article._id)
         navigate('/posts')
     }
 
@@ -41,10 +42,10 @@ function Show({ user }) {
             user
         }
 
-        const newComment = await createCommentForPost(comment, post._id)
-        let updatedPost = { ...post }
+        const newComment = await createCommentForPost(comment, article._id)
+        let updatedPost = { ...article}
         updatedPost.comments.push(newComment)
-        setPost(updatedPost)
+        setArticle(updatedPost)
         bodyRef.current.value = ''
         detailsRef.current.open = false
     }
@@ -52,22 +53,24 @@ function Show({ user }) {
     return (
             <div>
                 <div className="a-post">
-                    <h2>{post.subject}</h2>
-                    <h5 style={{ opacity: '.3'}}>Posted by {post.user} on {new Date(post.createdAt).toLocaleDateString()} at {new Date(post.createdAt).toLocaleTimeString()}</h5>
-                    <div className='p-body'>{post.body}</div><br /><br />
+                    <h2>{article.title}</h2>
+                    <img src= {article.img} alt="..."></img>
+                    <h5 style={{ opacity: '.3'}}>Posted by {article.user} on {new Date(article.createdAt).toLocaleDateString()} at {new Date(article.createdAt).toLocaleTimeString()}</h5>
+                  
+                    <div className='p-body'>{article.paragraph}</div><br /><br />
 
                     {
-                        post.comments?.length ?
+                        article.comments?.length ?
                         <>
                             <div>Comments:</div>
-                            <div>{post.comments.map((comment, i) => 
+                            <div>{article.comments.map((comment, i) => 
                                 <div key={i} className="comm">
                                     <div>{comment.user}</div>
                                     <div>{comment.body}</div>
                                     {comment.user === user &&
                                         <>
                                             <button onClick={() => handleDeleteComment(comment)}>X</button>
-                                            <Link to={`/posts/${post._id}/comments/${comment._id}`}><span>+</span></Link>
+                                            <Link to={`/posts/${article._id}/comments/${comment._id}`}><span>+</span></Link>
                                         </>
                                     }
                                 </div>
@@ -87,10 +90,10 @@ function Show({ user }) {
                     }
                     
                     <div className="buttons">
-                        {post.user === user &&
+                        {article.user === user &&
                             <>
                                 <button onClick={handleDeletePost}>Delete</button>
-                                <Link to={`/posts/${post._id}/edit`}>
+                                <Link to={`/posts/${article._id}/edit`}>
                                     <button>Edit</button>
                                 </Link>
                             </>

@@ -315,6 +315,7 @@ li.posts-nav {
   margin-right: 25vw;
 }
 .g-4{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   margin-left: 26vw;
   margin-right: 26vw;
   padding: 10px;

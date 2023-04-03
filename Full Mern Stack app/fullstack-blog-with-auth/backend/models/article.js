@@ -29,9 +29,6 @@ const GamingData = [
         title: " Klonoa Phantasy Reverie Series development started on Switch,",
     }
 
-
-
-
 ];
 
 

@@ -11,7 +11,7 @@ function Index(user) {
 
     const [posts, setPosts] = useState([])
     const [article, setArticle] = useState()
-    const [morearticle, setmoreArticle] = useState()
+    const [morearticles, setmoreArticle] = useState()
   
     
 
@@ -78,18 +78,15 @@ function Index(user) {
             <div>
                 {/* {morearticle?.map((morearticles, index) => */}
                 <Row xs={1} md={3} className="g-4" >
-                    {morearticle?.map((morearticles, idx) => (
-                        < Link to={`/posts/comments/`}>
+                    {morearticles?.map((morearticle, idx) => (
+                        < Link to={`/posts/${morearticle._id}`}>
                             <Card key={idx} >
                  
-                                <Card.Img variant="top" src={morearticles.img}  />
+                                <Card.Img variant="top" src={morearticle.img}  />
                                 <Card.Body>
                                     
-                                    <Card.Title>{morearticles.title}</Card.Title>
+                                    <Card.Title>{morearticle.title}</Card.Title>
                                     <Card.Text>
-                                        {/* This is a longer card with supporting text below as a natural
-                         lead-in to additional content. This content is a little bit
-                         longer. */}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

@@ -17,16 +17,7 @@ router.get('/seed', async(req, res)=>{
 // index
 router.get('/', moreArticleController.index)
 
-// // delete
-// router.delete('/:id', article.delete)
 
-// // update
-// router.put('/:id',  article.update)
-
-// // create
-// router.post('/',  article.create)
-
-// // show
-// router.get('/:id', article.show)
+router.get('/:id', moreArticleController.show)
 
 module.exports = router

@@ -17,3 +17,14 @@ module.exports.index = async (req, res) => {
     }
 }
 
+module.exports.show = async (req, res) => {
+    console.log(req.params)
+    try {
+        // populate replaces the ids with actual documents/objects we can use
+        const article = await moreArticles.findById(req.params.id)
+        res.status(200).json(article)
+    } catch(err) {
+        console.log(err)
+        res.status(404).json({ error: err.message })
+    }
+}
