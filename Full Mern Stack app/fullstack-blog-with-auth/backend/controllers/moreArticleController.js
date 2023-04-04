@@ -28,3 +28,17 @@ module.exports.show = async (req, res) => {
         res.status(404).json({ error: err.message })
     }
 }
+module.exports.delete = async (req, res) => {
+    try {
+        // first find the post, store it in a variable, then delete it from database
+        const article = await moreArticles.findByIdAndDelete(req.params.id)
+        // delete all comments where the comment id 
+        await article.deleteMany({ _id: { 
+            // equals/matches any comment ids in this array
+            $in: article.comments 
+        }})
+        res.status(200).json({ message: 'deleted successfully' })
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}

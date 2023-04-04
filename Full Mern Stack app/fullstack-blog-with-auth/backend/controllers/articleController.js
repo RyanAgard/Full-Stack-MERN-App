@@ -2,11 +2,26 @@ const article = require('../models/article');
 const Article= require('../models/articleModel')
 
 module.exports.seed = async (req, res) => {
+    console.log("running")
     await Article.deleteMany({})
     await Article.create(article)
     res.redirect('/posts')
 }
 
+module.exports.addcomment = async (req, res) => {
+    console.log(req.body)
+    try {
+      await Article.findByIdAndUpdate(req.params.articleid, {
+        // push the req.body to the comments property/field of this post document
+        $push: {
+            comment: req.body
+        }
+    })
+    res.redirect(`/posts/${req.params.articleid}`)
+    } catch(err) { console.log(err.message)
+        res.status(400).json({ error: err.message })
+    }
+}
 
 module.exports.index = async (req, res) => {
     try {

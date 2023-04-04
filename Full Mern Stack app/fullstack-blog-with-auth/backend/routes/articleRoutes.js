@@ -7,11 +7,7 @@ const articlecontroller =require('../controllers/articleController')
 const GamingData = require('../models/article')
 // seed 
 
-router.get('/seed', async(req, res)=>{
-    
-    const NewData =await Article.create(GamingData)
-    res.json(NewData)
-})
+router.get('/seed',articlecontroller.seed)
 
 
 // index
@@ -28,5 +24,7 @@ router.get('/', articlecontroller.index)
 
 // // show
 // router.get('/:id', article.show)
+
+router.post("/:articleid",articlecontroller.addcomment)
 
 module.exports = router
