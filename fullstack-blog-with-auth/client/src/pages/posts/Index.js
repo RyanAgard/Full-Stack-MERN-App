@@ -4,7 +4,7 @@ import { getAllPosts } from "../../services/postService"
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
-import { customAxios, customAxiosWithAuth } from '../../services/api'
+import { customAxios } from '../../services/api'
 // import axios from "axios"
 
 function Index({user}) {
