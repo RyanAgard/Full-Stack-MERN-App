@@ -49,7 +49,7 @@ export async function deletePost(id) {
 
 export async function updatePost(id, post) {
     console.log(id,post)
-    const axios = customAxiosWithAuth()
+     customAxiosWithAuth()
     try {
         // await axios.put(`/posts/${id}`, post)
     } catch(err) {
