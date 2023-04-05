@@ -9,7 +9,8 @@ async function authorize(req, res, next) {
     try {
         // 1. Check if the request has a token
         let token = req.header("Authorization") // ->  "Bearer adshjh0249384la;sf"
-
+   
+        
         if (!token) { 
             throw new Error('No token provided')
         }
