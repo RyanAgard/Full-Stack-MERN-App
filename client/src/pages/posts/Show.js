@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { createCommentForPost, deleteCommentFromPost } from "../../services/commentService"
-import { deletePost, getPost } from "../../services/postService"
+import { deletePost } from "../../services/postService"
 import { getmoreArticle } from "../../services/moreArticle"
 
 function Show({ user }) {
@@ -17,8 +17,7 @@ function Show({ user }) {
     useEffect(() => {
         async function loadData() {
             const data = await getmoreArticle(params.id)
-            if (!data) data = {}
-            setArticle(data)
+          setArticle(data)
         }
         loadData()
     }, [params.id])
