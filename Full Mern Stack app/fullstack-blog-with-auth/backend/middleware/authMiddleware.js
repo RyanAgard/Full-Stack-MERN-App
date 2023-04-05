@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken')
 
 const Post = require('../models/postModel')
 const Comment = require('../models/commentModel')
+const moreArticles = require('../models/moreArticleModel')
 
 async function authorize(req, res, next) {
-
+ console.log('authorize')
     try {
         // 1. Check if the request has a token
         let token = req.header("Authorization") // ->  "Bearer adshjh0249384la;sf"
@@ -39,18 +40,22 @@ async function authorize(req, res, next) {
 }
 
 async function confirmUserAccess(req, res, next) {
+    console.log(req.user,req.params.id)
     try {
+        console.log(req.baseUrl)
         let document;
         if (req.baseUrl.includes('post')) { 
             document = await Post.findOne({ _id: req.params.id, user: req.user })
         } else {
-            document = await Comment.findOne({ _id: req.params.id, user: req.user })
+            document = await moreArticles.findOne({ _id: req.params.pid, user: req.user })
         }
+      
         if (!document) {
             throw new Error('User did not create this document')
         }
         next()
     } catch(err) {
+        console.log(err.message)
         res.status(403).json({ error: err.message })
     }
 }

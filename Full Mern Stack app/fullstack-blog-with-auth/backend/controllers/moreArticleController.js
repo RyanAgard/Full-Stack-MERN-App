@@ -35,10 +35,79 @@ module.exports.delete = async (req, res) => {
         // delete all comments where the comment id 
         await article.deleteMany({ _id: { 
             // equals/matches any comment ids in this array
-            $in: article.comments 
+            $in: article.comment
         }})
         res.status(200).json({ message: 'deleted successfully' })
     } catch(err) {
         res.status(400).json({ error: err.message })
+    }
+    // module.exports.addcomment = async (req, res) => {
+    //     console.log(req.params)
+    //     try {
+    //       const updateArticle = await Article.findByIdAndUpdate(req.params.articleid, {
+    //         // push the req.body to the comments property/field of this post document
+    //         $push: {
+    //             comment: req.body
+    //         }
+    //     })
+    //     console.log(updateArticle)
+    //     res.status(200).json(updateArticle)
+    //     } catch(err) { console.log(err.message)
+    //         res.status(400).json({ error: err.message })
+    //     }
+    // }
+  
+}
+module.exports.addcomment = async (req, res) => {
+    console.log(req.params)
+    console.log(req.body)
+    try {
+      const updateArticle = await moreArticles.findByIdAndUpdate(req.params.articleid, {
+        // push the req.body to the comments property/field of this post document
+        $push: {
+            comment: req.body
+        }
+    })
+    console.log(updateArticle)
+    res.status(200).json(updateArticle)
+    } catch(err) { console.log(err.message)
+        res.status(400).json({ error: err.message })
+    }
+}
+
+
+module.exports.deleteComment = async (req, res) => {
+    console.log(req.params.id)
+    try {
+        // first use the id to delete the comment from the comments collection
+        await comment.findByIdAndDelete(req.params.id)
+        // then use the post's id to find the post
+        await Posts.findByIdAndUpdate(req.params.pid, {
+            // and pull/remove the reference id (to the comment) from
+            $pull: {
+                // the comments array
+                comments: req.params.id
+            }
+        })
+        res.json({ message: 'deleted successfully' })
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}
+module.exports.updateArticle = async (req, res) => {
+    try { console.log("update")
+        // add a third argument to the update { new: true } to return the new updated version of the document
+        const updatedPost = await moreArticles.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.status(200).json(updatedPost)
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}
+module.exports.createPost= async (req, res) => {
+    try {console.log("post")
+         await moreArticles.create(req.body)
+    } catch(err) {
+        console.log(err.message)
+       
     }
 }

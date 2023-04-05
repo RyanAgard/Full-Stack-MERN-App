@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { getPost, updatePost } from '../../services/postService'
+// import {  updatePost } from '../../services/postService'
+import { getmoreArticle ,updatePost} from "../../services/moreArticle"
 
 function Edit() {
 
@@ -11,21 +12,23 @@ function Edit() {
 
     const bodyRef = useRef()
     const subjectRef = useRef()
-
+    console.log(subjectRef) 
     useEffect(() => {
-        getPost(params.id).then(data => setPost(data))
+        getmoreArticle(params.id).then(data => setPost(data))
     }, [params.id])
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault() 
+        
         let updatedPost = {
-            subject: subjectRef.current.value,
-            body: bodyRef.current.value
+            title: subjectRef.current.value,
+            paragraph: bodyRef.current.value
+           
         }
         await updatePost(post._id, updatedPost)
-        navigate(`/posts/${post._id}`)
+        navigate(`/posts/${post._id}`) 
     }
-
+ console.log(post)
     return ( 
         <div>
             <h1>Edit Post</h1>
@@ -33,7 +36,7 @@ function Edit() {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="nme">Subject:</label><br />
                     <input type="text" id="nme" ref={subjectRef} defaultValue={post.subject} /><br /><br />
-
+                {console.log(post.subject)}
                     <label htmlFor="clr">Body:</label><br />
                     <textarea ref={bodyRef} id="clr" cols="30" rows="10" defaultValue={post.body} /><br /><br />
 

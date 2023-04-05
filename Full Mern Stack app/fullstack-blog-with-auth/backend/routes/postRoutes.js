@@ -3,25 +3,24 @@ const express = require('express')
 const router = express.Router()
 
 const postControl = require('../controllers/postController')
-
 const { authorize, confirmUserAccess } = require('../middleware/authMiddleware')
 
-// seed 
+// // seed 
 router.get('/seed', postControl.seed)
 
-// index
+// // index
 router.get('/', postControl.index)
 
-// delete
+// // delete
 router.delete('/:id', authorize, confirmUserAccess, postControl.delete)
 
-// update
+// // update
 router.put('/:id', authorize, confirmUserAccess, postControl.update)
 
-// create
-router.post('/', authorize, postControl.create)
+// // create
+// router.post('/', authorize, postControl.create)
 
-// show
+// // show
 router.get('/:id', postControl.show)
 
 module.exports = router

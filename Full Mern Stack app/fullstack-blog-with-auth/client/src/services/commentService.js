@@ -1,18 +1,20 @@
 import { customAxiosWithAuth } from './api'
 
 export async function deleteCommentFromPost(commentId, postId) {
+    console.log("delete")
     const axios = customAxiosWithAuth()
     try {
-        await axios.delete(`/comments/p/${postId}/c/${commentId}`)
+        await axios.delete(`/comments/${postId}/c/${commentId}`)
     } catch(err) {
         console.log(err.message)
     }
 }
 
-export async function createCommentForPost(comment, postId) {
+export async function createCommentForPost(comment,postId) {
     const axios = customAxiosWithAuth()
     try {
-        const response = await axios.post(`/comments/p/${postId}`, comment)
+        console.log(comment)
+        const response = await axios.post(`/moreArticle/${postId}`,comment)
         return response.data
     } catch(err) {
         console.log(err.message)

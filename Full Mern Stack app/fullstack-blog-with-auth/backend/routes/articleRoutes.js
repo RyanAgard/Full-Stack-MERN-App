@@ -2,9 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const Article = require('../models/articleModel')
 const articlecontroller =require('../controllers/articleController')
-const GamingData = require('../models/article')
 // seed 
 
 router.get('/seed',articlecontroller.seed)

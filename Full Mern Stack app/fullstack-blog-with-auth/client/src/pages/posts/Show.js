@@ -7,6 +7,7 @@ import { getmoreArticle } from "../../services/moreArticle"
 function Show({ user }) {
 
     const [article, setArticle] = useState({})
+    
 
     const navigate = useNavigate()
     const params = useParams()
@@ -15,18 +16,19 @@ function Show({ user }) {
 
     useEffect(() => {
         async function loadData() {
-            const data = await  getmoreArticle(params.id)
-            if (!data) data ={}
+            const data = await getmoreArticle(params.id)
+            if (!data) data = {}
             setArticle(data)
         }
         loadData()
     }, [params.id])
-  console.log(article)
+    console.log(article)
     async function handleDeleteComment(comment) {
         await deleteCommentFromPost(comment._id, article._id)
         let updatedPost = { ...article }
-        updatedPost.comments = updatedPost.comments.filter(c => c._id !== comment._id)
+        updatedPost.comment = updatedPost.comment.filter(c => c._id !== comment._id)
         setArticle(updatedPost)
+        
     }
 
     async function handleDeletePost() {
@@ -42,28 +44,33 @@ function Show({ user }) {
             user
         }
 
-        const newComment = await createCommentForPost(comment, article._id)
-        let updatedPost = { ...article}
-        updatedPost.comments.push(newComment)
-        setArticle(updatedPost)
-        bodyRef.current.value = ''
-        detailsRef.current.open = false
+        const NewComment = await createCommentForPost(comment, article._id)
+        console.log(NewComment)
+        if (NewComment) {
+            let updatedPost = { ...article }
+            updatedPost.comment.push(NewComment)
+            setArticle(updatedPost)
+            bodyRef.current.value = ''
+            detailsRef.current.open = false
+        }
+
     }
 
     return (
-            <div>
-                <div className="a-post">
-                    <h2>{article.title}</h2>
-                    <img src= {article.img} alt="..."></img>
-                    <h5 style={{ opacity: '.3'}}>Posted by {article.user} on {new Date(article.createdAt).toLocaleDateString()} at {new Date(article.createdAt).toLocaleTimeString()}</h5>
-                  
-                    <div className='p-body'>{article.paragraph}</div><br /><br />
+        <div>
+            <div className="a-post">
+                <h2>{article.title}</h2>
+                <img src={article.img} alt="..."></img>
+                <h5 style={{ opacity: '.3' }}>Posted by {article.user} on {new Date(article.createdAt).toLocaleDateString()} at {new Date(article.createdAt).toLocaleTimeString()}</h5>
 
-                    {
-                        article.comments?.length ?
+                <div className='p-body'>{article.paragraph}</div><br /><br />
+
+
+                {
+                    article.comment?.length ?
                         <>
                             <div>Comments:</div>
-                            <div>{article.comments.map((comment, i) => 
+                            <div>{article.comment.map((comment, i) =>
                                 <div key={i} className="comm">
                                     <div>{comment.user}</div>
                                     <div>{comment.body}</div>
@@ -75,35 +82,36 @@ function Show({ user }) {
                                     }
                                 </div>
                             )}</div>
-                            <br/><br/>
+                            <br /><br />
                         </>
                         : ''
+                }
+                {user &&
+                    <details ref={detailsRef}>
+                        <summary style={{ opacity: '.5' }}>Leave a comment:</summary>
+                        <form onSubmit={handleSubmit}>
+                            <textarea ref={bodyRef} id="lc" cols="1" rows="1" />
+                            <button>Comment</button>
+                        </form>
+                    </details>
+                }
+
+                <div className="buttons">
+                    {article.user === user &&
+                        <>
+                            {console.log(article.user, user)}
+                            <button onClick={handleDeletePost}>Delete</button>
+                            <Link to={`/posts/${article._id}/edit`}>
+                                <button>Edit</button>
+                            </Link>
+                        </>
                     }
-                    {user && 
-                        <details ref={detailsRef}>
-                            <summary style={{ opacity: '.5' }}>Leave a comment:</summary>
-                            <form onSubmit={handleSubmit}>
-                                <textarea ref={bodyRef} id="lc" cols="1" rows="1" />
-                                <button>Comment</button>
-                            </form>
-                        </details>
-                    }
-                    
-                    <div className="buttons">
-                        {article.user === user &&
-                            <>
-                                <button onClick={handleDeletePost}>Delete</button>
-                                <Link to={`/posts/${article._id}/edit`}>
-                                    <button>Edit</button>
-                                </Link>
-                            </>
-                        }
-                        <Link to='/posts'>
-                            <button>Back</button>
-                        </Link>
-                    </div>
+                    <Link to='/posts'>
+                        <button>Back</button>
+                    </Link>
                 </div>
             </div>
+        </div>
     )
 }
 

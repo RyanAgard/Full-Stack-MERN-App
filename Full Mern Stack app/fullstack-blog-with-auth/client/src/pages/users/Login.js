@@ -20,11 +20,12 @@ function Login({ setUser }) {
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
+        // console.log(e.target.name, e.target.value)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+ console.log(form)
         const token = await userLogin(form)
 
         if (!token) {
@@ -38,7 +39,7 @@ function Login({ setUser }) {
         setUser(user)
 
         navigate('/posts')
-    }
+     }
 
     return (
         <div className='user-auth'>
@@ -50,7 +51,7 @@ function Login({ setUser }) {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                    
-                    <Form.Control value={form.password} onChange={handleChange} name="password" id="password" type="password" placeholder="Password" />
+                    <Form.Control value={form.password} onChange={handleChange} name="password"  type="password" placeholder="Password" />
                     
                 </Form.Group>
                 < Button variant="primary" type="submit">Submit</Button>

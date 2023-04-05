@@ -1,20 +1,25 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../../services/postService";
+import { createPost } from "../../services/moreArticle";
 
 function New({ user }) {
 
     let subjectRef = useRef()
     let bodyRef = useRef()
+    let imgRef =useRef()
     let navigate = useNavigate()
 
     async function handleSubmit(e) {
         e.preventDefault()
         let post = {
-            subject: subjectRef.current.value,
-            body: bodyRef.current.value,
+            title: subjectRef.current.value,
+            paragraph: bodyRef.current.value,
+            img: imgRef.current.value,
+
             user
+
         }
+        console.log(post)
         await createPost(post)
         navigate('/posts')
     }
@@ -29,6 +34,8 @@ function New({ user }) {
                 <label htmlFor="clr">Body:</label><br />
                 <textarea id="clr" cols="30" rows="10" ref={bodyRef} /><br /><br />
 
+                <label htmlFor="clr">img:</label><br />
+               <input ref={imgRef}></input>
                 <button>Submit</button>
             </form>
         </div>

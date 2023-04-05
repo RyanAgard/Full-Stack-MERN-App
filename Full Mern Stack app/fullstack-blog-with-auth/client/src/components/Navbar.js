@@ -52,7 +52,7 @@ function Navbars({ user, setUser, ...props }) {
 
     <>
       {user ?
-        <Navbar bg="dark" variant="dark" sticky="top">
+        <Navbar className="Navbar" bg="dark" variant="dark" sticky="top">
           <Container>
             <Navbar.Brand href="/posts">NGC</Navbar.Brand>
             <Nav style={{ color: "White" }}>Welcome {user}!</Nav>

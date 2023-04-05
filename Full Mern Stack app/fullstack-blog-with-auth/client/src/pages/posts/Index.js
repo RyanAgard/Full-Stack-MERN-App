@@ -4,11 +4,10 @@ import { getAllPosts } from "../../services/postService"
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
-
+import { customAxios, customAxiosWithAuth } from '../../services/api'
 // import axios from "axios"
 
-function Index(user) {
-
+function Index({user}) {
     const [posts, setPosts] = useState([])
     const [article, setArticle] = useState()
     const [morearticles, setmoreArticle] = useState()
@@ -16,10 +15,12 @@ function Index(user) {
     
 
     const moreArticle = async () => {
-        const morearticle = await fetch('/moreArticle')
-        const result = await morearticle.json()
-        setmoreArticle(result)
-        console.log(result)
+        const axios = customAxios()
+        const response = await axios.get('/moreArticle')
+        console.log(response)
+        // const morearticle = await fetch('/moreArticle')
+        setmoreArticle(response.data)
+        console.log(response.data)
     }
     const getArticle = async () => {
         const article = await fetch('/article')
@@ -38,11 +39,11 @@ function Index(user) {
         loadData()
     }, [])
 
-    
+    console.log(user)
     return (
 
 
-        <div>
+        <div className="frontpage">
             <Carousel>
             {article?.map((articles, index) =>
                 <Carousel.Item interval={5000} key={index}>
@@ -75,16 +76,15 @@ function Index(user) {
 
                 )}
             </div> */}
-            <div>
+            <div className="moreArticles">
                 {/* {morearticle?.map((morearticles, index) => */}
                 <Row xs={1} md={3} className="g-4" >
                     {morearticles?.map((morearticle, idx) => (
-                        < Link to={`/posts/${morearticle._id}`}>
+                        < Link className="A-link" to={`/posts/${morearticle._id}`}>
                             <Card key={idx} >
                  
                                 <Card.Img variant="top" src={morearticle.img}  />
                                 <Card.Body>
-                                    
                                     <Card.Title>{morearticle.title}</Card.Title>
                                     <Card.Text>
                                     </Card.Text>
@@ -122,7 +122,7 @@ function Index(user) {
 
                     {user &&
                         <Link to="/posts/new">
-                            <button>NEW POST</button>
+                            <button>New Article</button>
                         </Link>
                     }
 

@@ -10,7 +10,7 @@ const GamingDatabase = [
     {
         img: "https://newsboilerstorage.blob.core.windows.net/news/2544171_0.jpg",
        
-        paragraph: "So it’s official, E3 2023, the videogames industry’s most prestigious show has been cancelled. Once the highlight of the year, drawing companies, executives, media, and consumers from around the world, its demise seems almost assured. But what effect does that have on the industry as a whole? And where immersive gaming is concerned, does VR need events like E3 anymore?",
+        paragraph: "So it’s official, E3 2023, the videogames industrys most prestigious show has been cancelled. Once the highlight of the year, drawing companies, executives, media, and consumers from around the world, its demise seems almost assured. But what effect does that have on the industry as a whole? And where immersive gaming is concerned, does VR need events like E3 anymore?",
          user: "coldfrost",
         title: "Does VR Need Events Like E3? ",
 

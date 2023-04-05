@@ -2,6 +2,7 @@ const Posts = require('../models/postModel')
 const Comments = require('../models/commentModel')
 
 const posts = require('../models/posts')
+const moreArticles = require('../models/moreArticleModel')
 
 module.exports.seed = async (req, res) => {
     await Posts.deleteMany({})
@@ -36,24 +37,25 @@ module.exports.delete = async (req, res) => {
 module.exports.update = async (req, res) => {
     try {
         // add a third argument to the update { new: true } to return the new updated version of the document
-        const updatedPost = await Posts.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        const updatedPost = await moreArticles.findByIdAndUpdate(req.params.id, req.body, { new: true })
         res.status(200).json(updatedPost)
     } catch(err) {
         res.status(400).json({ error: err.message })
     }
 }
 
-module.exports.create = async (req, res) => {
-    try {
-        const post = await Posts.create(req.body)
-        res.status(200).json(post )
-    } catch(err) {
-        res.status(400).json({ error: err.message })
-    }
-}
+// module.exports.create = async (req, res) => {
+//     try {
+//         const post = await moreArticles.create(req.body)
+//         res.status(200).json(post )
+//     } catch(err) {
+//         res.status(400).json({ error: err.message })
+//     }
+// }
 
 module.exports.show = async (req, res) => {
     try {
+        console.log("show",req.params.id)
         // populate replaces the ids with actual documents/objects we can use
         const post = await Posts.findById(req.params.id).populate('comments')
         res.status(200).json(post)

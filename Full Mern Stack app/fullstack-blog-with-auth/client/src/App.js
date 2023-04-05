@@ -39,7 +39,7 @@ function App() {
   }, [])
 
   let loggedIn = user.username
-
+console.log(loggedIn,"hey")
   return (
     <div className="App">
       <Navbar user={loggedIn} setUser={setUser} />

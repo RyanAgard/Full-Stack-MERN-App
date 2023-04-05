@@ -9,15 +9,17 @@ module.exports.seed = async (req, res) => {
 }
 
 module.exports.addcomment = async (req, res) => {
+    console.log(req.params)
     console.log(req.body)
     try {
-      await Article.findByIdAndUpdate(req.params.articleid, {
+      const updateArticle = await Article.findByIdAndUpdate(req.params.articleid, {
         // push the req.body to the comments property/field of this post document
         $push: {
             comment: req.body
         }
     })
-    res.redirect(`/posts/${req.params.articleid}`)
+    console.log(updateArticle)
+    res.status(200).json(updateArticle)
     } catch(err) { console.log(err.message)
         res.status(400).json({ error: err.message })
     }
