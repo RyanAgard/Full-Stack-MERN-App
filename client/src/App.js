@@ -13,6 +13,7 @@ import EditComment from './pages/comments/Edit';
 import Register from './pages/users/Register';
 import Login from './pages/users/Login';
 
+
 import Navbar from './components/Navbar';
 
 function App() {
@@ -23,12 +24,12 @@ function App() {
   useEffect(() => {
       
       let token = localStorage.getItem("token")
-
       if (token) {
           getLoggedInUser()
       } else {
           setIsLoading(false)
       }
+
 
       async function getLoggedInUser() {
           const user = await userInfo()
@@ -37,6 +38,7 @@ function App() {
       }
 
   }, [])
+
 
   let loggedIn = user.username
 console.log(loggedIn,"hey")
@@ -48,6 +50,7 @@ console.log(loggedIn,"hey")
           <Route path='/posts/:id' element={<ShowPost user={loggedIn} />} />
           {loggedIn ?
             <>
+            
               <Route path='/posts/new' element={<NewPost user={loggedIn} />} />
               <Route path='/posts/:id/edit' element={<EditPost />} />
               <Route path='/posts/:id/comments/:cid' element={<EditComment />} />
