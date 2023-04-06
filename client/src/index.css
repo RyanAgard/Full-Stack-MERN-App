@@ -330,10 +330,6 @@ li.posts-nav {
   height: 100px;
 }
 .row{
-  
+   box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   margin-top:0 ;
-}
-.A-link{
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
- gap: 20px;
 }
