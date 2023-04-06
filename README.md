@@ -37,4 +37,5 @@ Future features would be to allow user to sign in and out with there gametage no
 # Unsolved Problems
 
   User: comments dont delete right way you may have to refresh the page
+  ###
   Css: still need some heavy work and development 
