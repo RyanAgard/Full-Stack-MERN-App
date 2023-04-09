@@ -28,4 +28,8 @@ router.get('/:id', moreArticleController.show)
 
 router.post('/', authorize, moreArticleController.createPost)
 
+
+router.delete('/:id', authorize, confirmUserAccess, moreArticleController.delete)
+
+
 module.exports = router

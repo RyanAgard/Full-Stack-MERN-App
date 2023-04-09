@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { createCommentForPost, deleteCommentFromPost } from "../../services/commentService"
-import { deletePost } from "../../services/postService"
+// import { deletePost } from "../../services/postService"
 import { getmoreArticle } from "../../services/moreArticle"
+import {deleteArticle} from"../../services/moreArticle"
 
 function Show({ user }) {
 
@@ -31,7 +32,7 @@ function Show({ user }) {
     }
 
     async function handleDeletePost() {
-        await deletePost(article._id)
+        await deleteArticle(article._id)
         navigate('/posts')
     }
 

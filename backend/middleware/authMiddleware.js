@@ -26,7 +26,7 @@ async function authorize(req, res, next) {
         }
 
         // 3. Attach the payload from the token to the request object (req)
-
+        
         req.id = payload.id
         req.user = payload.user
 
@@ -43,10 +43,11 @@ async function authorize(req, res, next) {
 async function confirmUserAccess(req, res, next) {
     console.log(req.user,req.params.id)
     try {
-        console.log(req.baseUrl)
+        console.log(req.baseUrl,"yes")
+        console.log(req.baseUrl.includes('post'))
         let document;
         if (req.baseUrl.includes('post')) { 
-            document = await Post.findOne({ _id: req.params.id, user: req.user })
+            document = await moreArticles.findOne({ _id: req.params.id, user: req.user })
         } else {
             document = await moreArticles.findOne({ _id: req.params.pid, user: req.user })
         }

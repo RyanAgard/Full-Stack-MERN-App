@@ -22,11 +22,11 @@ module.exports.index = async (req, res) => {
 module.exports.delete = async (req, res) => {
     try {
         // first find the post, store it in a variable, then delete it from database
-        const post = await Posts.findByIdAndDelete(req.params.id)
+        const post = await moreArticles.findByIdAndDelete(req.params.id)
         // delete all comments where the comment id 
-        await Comments.deleteMany({ _id: { 
+        await moreArticles.deleteMany({ _id: { 
             // equals/matches any comment ids in this array
-            $in: post.comments 
+            $in: post.comment 
         }})
         res.status(200).json({ message: 'deleted successfully' })
     } catch(err) {

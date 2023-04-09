@@ -1,10 +1,7 @@
 # Full-Stack-MERN-App
-
-## Weather App
 |Name       | Email                |
 |-----------|----------------------|
 |Ryan Agard | ryantagard@yahoo.com |
-
 
 # React Technologies Used
 * useState 

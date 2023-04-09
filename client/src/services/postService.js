@@ -26,14 +26,14 @@ export async function getPost(id) {
     }
 }
 
-export async function deletePost(id) {
-    const axios = customAxiosWithAuth()
-    try {
-        await axios.delete(`/posts/${id}`)
-    } catch(err) {
-        console.log(err.message)
-    }
-}
+// export async function deletePost(id) {
+//     const axios = customAxiosWithAuth()
+//     try {
+//         await axios.delete(`/moreArticle/${id}`)
+//     } catch(err) {
+//         console.log(err.message)
+//     }
+// }
 
 // export async function createPost(post) {
 //     const axios = customAxiosWithAuth()

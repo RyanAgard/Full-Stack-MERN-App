@@ -50,7 +50,7 @@ function Register({ setUser }) {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                    
-                    <Form.Control value={form.email} onChange={handleChange} name="Email"  type="email"  placeholder="Email" />
+                    <Form.Control value={form.email} onChange={handleChange} name="email"  type="email"  placeholder="Email" />
                 </Form.Group>
 
                 <Form.Control value={form.password} onChange={handleChange} name="password"  type="password" placeholder="Password" />

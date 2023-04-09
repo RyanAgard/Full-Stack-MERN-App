@@ -60,3 +60,12 @@ export async function createPost(post) {
         alert(err.response?.data?.error)
     }
 }
+
+export async function deleteArticle(id,user) {
+    const axios = customAxiosWithAuth()
+    try {
+        await axios.delete(`/moreArticle/${id}${user}`)
+    } catch(err) {
+        console.log(err.message)
+    }
+}
