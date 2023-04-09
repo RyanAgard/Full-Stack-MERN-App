@@ -44,8 +44,8 @@ function Index({user}) {
 
 
         <div className="frontpage">
-             {article?.map((articles, index) =>
             <Carousel>
+            {article?.map((articles, index) =>
                 <Carousel.Item interval={5000} key={index}>
                     <img
                         className="d-block w-100"
@@ -57,9 +57,8 @@ function Index({user}) {
                         {/* <p >{articles.paragraph}</p> */}
                     </Carousel.Caption>
                 </Carousel.Item>
-               
-            </Carousel> 
-            )}
+                )}
+            </Carousel>
             {/* <div className="card-group ">
                 {article?.map((articles, index) =>
 
