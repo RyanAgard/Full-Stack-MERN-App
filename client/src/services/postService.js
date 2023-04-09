@@ -1,16 +1,16 @@
 import { customAxios, customAxiosWithAuth } from './api'
 
-export async function getAllPosts() {
-    const axios = customAxios()
-    try {
-        const response = await axios.get('/posts')
-        return response.data
+// export async function getAllPosts() {
+//     const axios = customAxios()
+//     try {
+//         const response = await axios.get('/posts')
+//         return response.data
     
-    } catch(err) {   
-        console.log(err.message)
-        return []
-    }
-}
+//     } catch(err) {   
+//         console.log(err.message)
+//         return []
+//     }
+// }
 
 export async function getPost(id) {
     const axios = customAxios()

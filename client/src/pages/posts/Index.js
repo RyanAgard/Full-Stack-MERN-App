@@ -1,6 +1,7 @@
 import { useEffect, useState,} from "react"
 import { Link } from "react-router-dom"
-import { getAllPosts } from "../../services/postService"
+// import { getAllPosts } from "../../services/postService"
+import { getAllmoreArticle } from "../../services/moreArticle";
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
@@ -33,7 +34,7 @@ function Index({user}) {
         getArticle()
         moreArticle()
         async function loadData() {
-            const data = await getAllPosts()
+            const data = await getAllmoreArticle()
             setPosts(data)
         }
         loadData()
