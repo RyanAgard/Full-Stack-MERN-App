@@ -33,7 +33,7 @@ module.exports.delete = async (req, res) => {
         // first find the post, store it in a variable, then delete it from database
         const article = await moreArticles.findByIdAndDelete(req.params.id)
         // delete all comments where the comment id 
-        await article.deleteMany({ _id: { 
+        await moreArticles.deleteMany({ _id: { 
             // equals/matches any comment ids in this array
             $in: article.comment
         }})
@@ -79,6 +79,8 @@ module.exports.deleteComment = async (req, res) => {
         res.status(400).json({ error: err.message })
     }
 }
+
+
 module.exports.updateArticle = async (req, res) => {
     try { console.log("update")
         // add a third argument to the update { new: true } to return the new updated version of the document
@@ -89,6 +91,9 @@ module.exports.updateArticle = async (req, res) => {
         res.status(400).json({ error: err.message })
     }
 }
+
+
+
 module.exports.createPost= async (req, res) => {
     try {console.log("post")
          await moreArticles.create(req.body)

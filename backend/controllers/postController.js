@@ -4,11 +4,6 @@ const Posts = require('../models/postModel')
 const posts = require('../models/posts')
 const moreArticles = require('../models/moreArticleModel')
 
-module.exports.seed = async (req, res) => {
-    await Posts.deleteMany({})
-    await Posts.create(posts)
-    res.redirect('/posts')
-}
 
 module.exports.index = async (req, res) => {
     try {

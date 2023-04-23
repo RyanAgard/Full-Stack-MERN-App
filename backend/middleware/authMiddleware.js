@@ -46,7 +46,7 @@ async function confirmUserAccess(req, res, next) {
         if (req.baseUrl) { 
             document = await moreArticles.findOne({_id: req.params.id, user: req.user })
         } else {
-            document = await moreArticles.findOne({_id: req.params.pid, user: req.user })
+            document = await moreArticles.findOne({_id: req.params.id, user: req.user })
         }
       
         if (!document) {

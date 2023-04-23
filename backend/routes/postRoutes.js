@@ -6,7 +6,7 @@ const postControl = require('../controllers/postController')
 const { authorize, confirmUserAccess } = require('../middleware/authMiddleware')
 
 // // seed 
-router.get('/seed', postControl.seed)
+
 
 // // index
 router.get('/', postControl.index)
