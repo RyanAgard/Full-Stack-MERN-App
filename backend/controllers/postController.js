@@ -1,5 +1,5 @@
 const Posts = require('../models/postModel')
-const Comments = require('../models/commentModel')
+
 
 const posts = require('../models/posts')
 const moreArticles = require('../models/moreArticleModel')

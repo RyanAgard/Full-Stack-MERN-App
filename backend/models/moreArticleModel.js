@@ -3,14 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const moreArticleSchema = new Schema({
-   title :{type: String, required: true},
-   img: {type: String, required: true},
-   paragraph:{type:String,required:true},
+   title :{type: String,},
+   img: {type: String, },
+   paragraph:{type:String,},
    user: { type: String, required: true },
    comment:[
       {
-         user:{type:String},
-         body:{type:String}
+         user:{type:String,required: true},
+         body:{type:String},
+       
       }
    ] 
 }, { timestamps: true })

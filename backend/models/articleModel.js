@@ -10,7 +10,8 @@ const articleSchema = new Schema({
    comment:[
       {
          user:{type:String},
-         text:{type:String}
+         text:{type:String},
+        
       }
    ] 
 }, { timestamps: true })

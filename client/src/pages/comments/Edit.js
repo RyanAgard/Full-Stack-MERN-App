@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { getCommentFromPost, updateCommentOfIdFromPost } from '../../services/commentService'
+import { getCommentFromPost, updateCommentOfIdFromPost } from '../../services/moreArticle'
 
 function Edit() {
 

@@ -1,5 +1,5 @@
 // Require dotenv to setup environment variables in our server
-require('dotenv').config()
+require("dotenv").config()
 
 // Load express
 const express = require('express')
@@ -18,7 +18,7 @@ const connectDB = require('./config/db')
 connectDB()
 
 const postRoutes = require('./routes/postRoutes')
-const commentRoutes = require('./routes/commentRoutes')
+// const commentRoutes = require('./routes/commentRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const articleRoute = require('./routes/articleRoutes')
@@ -30,7 +30,7 @@ app.use(cors())
 
 app.use('/posts', postRoutes)
 // "/p/" stands for post and all comment routes need a reference to their post
-app.use('/comments/', commentRoutes)
+// app.use('/comments/', commentRoutes)
 app.use('/users', authorize, userRoutes)
 app.use('/auth', authRoutes)
 app.use('/article',articleRoute)

@@ -18,7 +18,7 @@ router.get('/seed', async(req, res)=>{
 // index
 router.get('/', moreArticleController.index)
 
-router.post("/:articleid",moreArticleController.addcomment)
+router.post("/:articleid",authorize,moreArticleController.addcomment)
 
 
 router.put("/:id",moreArticleController.updateArticle)
@@ -31,5 +31,6 @@ router.post('/', authorize, moreArticleController.createPost)
 
 router.delete('/:id', authorize, confirmUserAccess, moreArticleController.delete)
 
+router.delete('/:pid/c/:id', authorize, confirmUserAccess, moreArticleController.deleteComment)
 
 module.exports = router

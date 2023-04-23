@@ -12,7 +12,7 @@ function Edit() {
 
     const bodyRef = useRef()
     const subjectRef = useRef()
-    console.log(subjectRef) 
+    
     useEffect(() => {
         getmoreArticle(params.id).then(data => setPost(data))
     }, [params.id])
@@ -28,7 +28,6 @@ function Edit() {
         await updatePost(post._id, updatedPost)
         navigate(`/posts/${post._id}`) 
     }
- console.log(post)
     return ( 
         <div>
             <h1>Edit Post</h1>
@@ -36,7 +35,6 @@ function Edit() {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="nme">Subject:</label><br />
                     <input type="text" id="nme" ref={subjectRef} defaultValue={post.subject} /><br /><br />
-                {console.log(post.subject)}
                     <label htmlFor="clr">Body:</label><br />
                     <textarea ref={bodyRef} id="clr" cols="30" rows="10" defaultValue={post.body} /><br /><br />
 

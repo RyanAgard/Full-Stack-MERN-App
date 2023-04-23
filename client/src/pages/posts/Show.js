@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { createCommentForPost, deleteCommentFromPost } from "../../services/commentService"
+import { createCommentForPost, deleteCommentFromPost } from "../../services/moreArticle"
 // import { deletePost } from "../../services/postService"
 import { getmoreArticle } from "../../services/moreArticle"
 import {deleteArticle} from"../../services/moreArticle"
@@ -22,7 +22,7 @@ function Show({ user }) {
         }
         loadData()
     }, [params.id])
-    console.log(article)
+    // console.log(article)
     async function handleDeleteComment(comment) {
         await deleteCommentFromPost(comment._id, article._id)
         let updatedPost = { ...article }
@@ -70,14 +70,14 @@ function Show({ user }) {
                     article.comment?.length ?
                         <>
                             <div>Comments:</div>
-                            <div>{article.comment.map((comment, i) =>
+                            <div>{article.comment.map((comments, i) =>
                                 <div key={i} className="comm">
-                                    <div>{comment.user}</div>
-                                    <div>{comment.body}</div>
-                                    {comment.user === user &&
+                                    <div>{comments.user}</div>
+                                    <div>{comments.body}</div>
+                                    {comments?.user === user &&
                                         <>
-                                            <button onClick={() => handleDeleteComment(comment)}>X</button>
-                                            <Link to={`/posts/${article._id}/comment/${comment._id}`}><span>+</span></Link>
+                                            <button onClick={() => handleDeleteComment(comments)}>X</button>
+                                            <Link to={`/posts/${article._id}/comment/${comments._id}`}><span>+</span></Link>
                                         </>
                                     }
                                 </div>
@@ -97,7 +97,7 @@ function Show({ user }) {
                 }
 
                 <div className="buttons">
-                    {article.user === user &&
+                    {article?.user === user &&
                         <>
                             {console.log(article.user, user)}
                             <button onClick={handleDeletePost}>Delete</button>
