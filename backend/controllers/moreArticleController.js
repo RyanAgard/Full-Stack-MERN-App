@@ -105,13 +105,13 @@ module.exports.createPost= async (req, res) => {
 module.exports.createComment = async (req, res) => {
     try {
         // create a document in our comments collection
-        const comment = await Co.create(req.body)
+        const comment = await moreArticles.create(req.body)
         // find the post 
-        await Posts.findByIdAndUpdate(req.params.pid, {
+        await moreArticles.findByIdAndUpdate(req.params.pid, {
             // and push the new comment document's id
             $push: {
                 // to the post's comments field/property
-                comments: comment._id
+                comment: comment._id
             }
         })
         res.status(200).json(comment)

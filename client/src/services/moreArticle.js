@@ -60,16 +60,16 @@ export async function deleteArticle(id) {
         console.log(err.message)
     }
 }
-export async function createCommentForPost(comment, postId) {
-    const axios = customAxiosWithAuth()
-    try {
-        console.log(comment)
-        const response = await axios.post(`/moreArticle/${postId}`, comment)
-        return response.data
-    } catch (err) {
-        console.log(err.message)
-    }
-}
+// export async function createCommentForPost(comment, postId) {
+//     const axios = customAxiosWithAuth()
+//     try {
+//         console.log(comment)
+//         const response = await axios.post(`/comments${postId}`,comment)
+//         return response.data
+//     } catch (err) {
+//         console.log(err.message)
+//     }
+// }
 export async function deleteCommentFromPost(commentId, postId) {
     console.log(commentId, postId)
 
@@ -86,6 +86,17 @@ export async function getCommentFromPost(commentId, postId) {
         const response = await axios.get(`/comments/p/${postId}/c/${commentId}`)
         return response.data
     } catch(err) {
+        console.log(err.message)
+    }
+}
+export async function addcomment(comment, postId) {
+    const axios = customAxiosWithAuth()
+    console.log(postId)
+    try {
+        console.log(comment)
+        const response = await axios.post(`/moreArticle/${postId}`,comment)
+        return response.data
+    } catch (err) {
         console.log(err.message)
     }
 }

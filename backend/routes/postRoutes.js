@@ -12,10 +12,10 @@ const { authorize, confirmUserAccess } = require('../middleware/authMiddleware')
 router.get('/', postControl.index)
 
 // // delete
-router.delete('/:id', authorize, confirmUserAccess, postControl.delete)
+router.delete('/:id', authorize, confirmUserAccess,postControl.delete)
 
 // // update
-router.put('/:id', authorize, confirmUserAccess, postControl.update)
+router.put('/:id', authorize, confirmUserAccess,postControl.update)
 
 // // create
 // router.post('/', authorize, postControl.create)

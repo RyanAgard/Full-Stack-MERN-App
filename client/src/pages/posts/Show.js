@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { createCommentForPost, deleteCommentFromPost } from "../../services/moreArticle"
+import { addcomment, deleteCommentFromPost } from "../../services/moreArticle"
 // import { deletePost } from "../../services/postService"
 import { getmoreArticle } from "../../services/moreArticle"
 import {deleteArticle} from"../../services/moreArticle"
@@ -44,14 +44,14 @@ function Show({ user }) {
             user
         }
 
-        const NewComment = await createCommentForPost(comment, article._id)
-        console.log(NewComment)
+        const NewComment = await addcomment(comment, article._id)
+        console.log(comment)
         if (NewComment) {
             let updatedPost = { ...article }
             updatedPost.comment.push(NewComment)
             setArticle(updatedPost)
-            bodyRef.current.value = ''
-            detailsRef.current.open = false
+            // bodyRef.current.value = ''
+            // detailsRef.current.open = false
         }
 
     }
