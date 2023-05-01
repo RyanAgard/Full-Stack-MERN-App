@@ -17,7 +17,7 @@ const connectDB = require('./config/db')
 // Connect to database
 connectDB()
 
-const postRoutes = require('./routes/postRoutes')
+
 // const commentRoutes = require('./routes/commentRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -28,7 +28,7 @@ const { authorize } = require('./middleware/authMiddleware')
 app.use(express.json())
 app.use(cors())
 
-app.use('/posts', postRoutes)
+
 // "/p/" stands for post and all comment routes need a reference to their post
 // app.use('/comments/', commentRoutes)
 app.use('/users', authorize, userRoutes)

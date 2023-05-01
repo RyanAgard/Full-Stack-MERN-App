@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { addcomment, deleteCommentFromPost } from "../../services/moreArticle"
 // import { deletePost } from "../../services/postService"
-import { getmoreArticle } from "../../services/moreArticle"
+import {getmoreArticle } from "../../services/moreArticle"
 import {deleteArticle} from"../../services/moreArticle"
 
 function Show({ user }) {
