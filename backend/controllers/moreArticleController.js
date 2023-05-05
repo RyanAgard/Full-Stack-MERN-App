@@ -29,7 +29,6 @@ module.exports.show = async (req, res) => {
     }
 }
 module.exports.delete = async (req, res) => {
-    console.log('i deleted it')
     try {
         // first find the post, store it in a variable, then delete it from database
         const article = await moreArticles.findByIdAndDelete(req.params.id)
@@ -93,6 +92,8 @@ module.exports.updateArticle = async (req, res) => {
     }
 }
 
+
+
 module.exports.createPost= async (req, res) => {
     try {console.log("post")
          await moreArticles.create(req.body)
@@ -140,15 +141,15 @@ module.exports.deleteComment = async (req, res) => {
     }
 }
 
-// module.exports.indexComment = async (req, res) => {
-//     try {
-//         // target the comments property 
-//         const post = await Posts.findById(req.params.pid).populate('comments')
-//         res.json(post.comments)
-//     } catch(err) {
-//         res.status(400).json({ error: err.message })
-//     }
-// }
+module.exports.indexComment = async (req, res) => {
+    try {
+        // target the comments property 
+        const post = await Posts.findById(req.params.pid).populate('comments')
+        res.json(post.comments)
+    } catch(err) {
+        res.status(400).json({ error: err.message })
+    }
+}
 
 module.exports.showComment = async (req, res) => {
     try {

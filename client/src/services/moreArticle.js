@@ -29,7 +29,7 @@ export async function updateCommentOfIdFromPost(comment, commentId, postId) {
         console.log(err.message)
     }
 }
-export async function updateArticle(id, post) {
+export async function updatePost(id, post) {
     console.log(id, post)
     const axios = customAxiosWithAuth()
     try {
@@ -60,7 +60,16 @@ export async function deleteArticle(id) {
         console.log(err.message)
     }
 }
-
+// export async function createCommentForPost(comment, postId) {
+//     const axios = customAxiosWithAuth()
+//     try {
+//         console.log(comment)
+//         const response = await axios.post(`/comments${postId}`,comment)
+//         return response.data
+//     } catch (err) {
+//         console.log(err.message)
+//     }
+// }
 export async function deleteCommentFromPost(commentId, postId) {
     console.log(commentId, postId)
 

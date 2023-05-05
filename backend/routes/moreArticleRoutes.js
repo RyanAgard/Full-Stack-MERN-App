@@ -21,10 +21,11 @@ router.get('/', moreArticleController.index)
 router.post("/:articleid",authorize,moreArticleController.addcomment)
 
 
-router.put("/:id",authorize, confirmUserAccess,moreArticleController.updateArticle)
+router.put("/:id",moreArticleController.updateArticle)
 
 router.get('/:id', moreArticleController.show)
 
+// router.post('/:pid/', authorize, moreArticleController.createComment)
 
 router.post('/', authorize, moreArticleController.createPost)
 

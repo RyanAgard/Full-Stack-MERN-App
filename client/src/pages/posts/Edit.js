@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 // import {  updatePost } from '../../services/postService'
-import { getmoreArticle ,updateArticle} from "../../services/moreArticle"
+import { getmoreArticle ,updatePost} from "../../services/moreArticle"
 
 function Edit() {
 
@@ -25,7 +25,7 @@ function Edit() {
             paragraph: bodyRef.current.value
            
         }
-        await updateArticle(post._id, updatedPost)
+        await updatePost(post._id, updatedPost)
         navigate(`/posts/${post._id}`) 
     }
     return ( 
