@@ -25,7 +25,6 @@ router.put("/:id",moreArticleController.updateArticle)
 
 router.get('/:id', moreArticleController.show)
 
-// router.post('/:pid/', authorize, moreArticleController.createComment)
 
 router.post('/', authorize, moreArticleController.createPost)
 
