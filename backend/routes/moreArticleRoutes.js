@@ -23,7 +23,7 @@ router.post("/:articleid",authorize,moreArticleController.addcomment)
 
 router.put("/:id",moreArticleController.updateArticle)
 
-router.get('/:id', moreArticleController.show)
+router.get('/:id',moreArticleController.show)
 
 
 router.post('/', authorize, moreArticleController.createPost)

@@ -40,7 +40,7 @@ function Index({user}) {
         loadData()
     }, [])
 
-    console.log(user)
+  console.log(user)
     return (
 
 

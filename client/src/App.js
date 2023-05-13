@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
       
       let token = localStorage.getItem("token")
+  
       if (token) {
           getLoggedInUser()
       } else {
@@ -38,7 +39,7 @@ function App() {
       }
 
   }, [])
-
+console.log(user)
 
   let loggedIn = user.username
 // console.log(loggedIn,"hey")

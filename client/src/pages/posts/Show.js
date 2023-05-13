@@ -5,7 +5,7 @@ import { createCommentForPost, deleteCommentFromPost } from "../../services/more
 import { getmoreArticle } from "../../services/moreArticle"
 import {deleteArticle} from"../../services/moreArticle"
 
-function Show({ user }) {
+function Show({user}) {
 
     const [article, setArticle] = useState({})
     
@@ -61,7 +61,7 @@ function Show({ user }) {
             <div className="a-post">
                 <h2>{article.title}</h2>
                 <img src={article.img} alt="..."></img>
-                <h5 style={{ opacity: '.3' }}>Posted by {article.user} on {new Date(article.createdAt).toLocaleDateString()} at {new Date(article.createdAt).toLocaleTimeString()}</h5>
+                <h5 style={{ opacity: '.3' }}>Posted on {new Date(article.createdAt).toLocaleDateString()} at {new Date(article.createdAt).toLocaleTimeString()}</h5>
 
                 <div className='p-body'>{article.paragraph}</div><br /><br />
 

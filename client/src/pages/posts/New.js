@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../../services/moreArticle";
 
-function New({ user }) {
+function New({user}) {
 
     let subjectRef = useRef()
     let bodyRef = useRef()
